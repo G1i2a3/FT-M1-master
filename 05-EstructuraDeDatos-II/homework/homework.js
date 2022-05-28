@@ -41,7 +41,7 @@ Implementar la clase LinkedList, definiendo los siguientes métodos:
     }
     else {
       let pointer = this.head;          // referencia, le asignamos el valor de algo a una variable en vez de trabajar con el valor directo
-      while (pointer.next != null) {
+      while (pointer.next != null) {    // mientras que el next sea diferente a null
         pointer = pointer.next;
       }
       pointer.next = nuevoNodo;
