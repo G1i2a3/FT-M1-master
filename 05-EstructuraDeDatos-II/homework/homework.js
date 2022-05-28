@@ -1,19 +1,95 @@
 "use strict";
 
+const bus = require("@11ty/eleventy/src/EventBus");
+
 /*
 Implementar la clase LinkedList, definiendo los siguientes métodos:
   - add: agrega un nuevo nodo al final de la lista;
-  - remove: elimina el último nodo de la lista y retorna su valor (tener en cuenta el caso particular de una lista de un solo nodo y de una lista vacía);
-  - search: recibe un parámetro y lo busca dentro de la lista, con una particularidad: el parámetro puede ser un valor o un callback. En el primer caso, buscamos un nodo cuyo valor coincida con lo buscado; en el segundo, buscamos un nodo cuyo valor, al ser pasado como parámetro del callback, retorne true. 
+  - remove: elimina el último nodo de la lista y retorna su 
+  valor (tener en cuenta el caso particular de una 
+    lista de un solo nodo y de una lista vacía);
+  - search: recibe un parámetro y lo busca dentro de la lista,
+   con una particularidad: el parámetro puede ser un valor 
+   o un callback. (CALLBACK SERIA UNA FUNCTION, PUEDO RECIBIR UN VALOR O UNA FUNCTION (COMO ARGUMENTO) PARA BUSCAR)
+  En el primer caso, buscamos un nodo cuyo valor coincida con 
+  lo buscado; en el segundo, buscamos un nodo 
+  cuyo valor, al ser pasado como parámetro del callback, 
+  retorne true. 
   Ejemplo: 
   search(3) busca un nodo cuyo valor sea 3;
-  search(isEven), donde isEven es una función que retorna true cuando recibe por parámetro un número par, busca un nodo cuyo valor sea un número par.
-  En caso de que la búsqueda no arroje resultados, search debe retornar null.
+  search(isEven), donde isEven es una función que retorna
+  true cuando recibe por parámetro un número par, busca un 
+  nodo cuyo valor sea un número par.
+  En caso de que la búsqueda no arroje resultados, search debe
+   retornar null.
 */
 
-function LinkedList() {}
+  function LinkedList() {
+    this.head = null;
+    this.size = 0;
+  }
+  
+  function Node(value) {    // Clase + constructor = esta funcion
+    this.value = value;
+    this.next = null;
+  }
+  
+  LinkedList.prototype.add = function (value) {
+    var nuevoNodo = new Node(value);
+    if (!this.head) {
+    this.head = nuevoNodo;
+    }
+    else {
+      let pointer = this.head;          // referencia, le asignamos el valor de algo a una variable en vez de trabajar con el valor directo
+      while (pointer.next != null) {
+        pointer = pointer.next;
+      }
+      pointer.next = nuevoNodo;
+    }
+    this.size++;
+  };
+  
+  LinkedList.prototype.remove = function () {
+    let pointer = this.head;
+    if (!pointer){
+      return null 
+    }
+    if (this.size === 1){
+      let resultado = this.head.value   // me guardo el valor de this.head
+      this.head = null;                 // this.head es null, borre el nodo     
+      return resultado;                 //devuelvo el valor de lo que borre, puede ser cualquier cosa, por ej "Pepe" 
+    }
+    else {
+      while (pointer.next.next !== null ){
+        pointer = pointer.next
+      }
+      let auxiliar = pointer.next.value;
+      pointer.next = null;
+      this.size--;
+      return auxiliar;
+    }    
+  }
 
-function Node(value) {}
+  LinkedList.prototype.search = function (argumento) {
+    let buscar = this.head;
+    while (buscar !== null){
+      if (typeof argumento === "function") { 
+        if (argumento(buscar.value)) {
+          return buscar.value
+        }
+      }
+      else {
+        if (buscar.value === argumento){
+          return argumento
+        }
+        
+      }     
+      buscar = buscar.next
+    }
+    return null;
+
+
+  }
 
 /*
 Implementar la clase HashTable.

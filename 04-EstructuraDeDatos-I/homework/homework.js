@@ -73,7 +73,7 @@ es el primero que se quita. Definir los siguientes métodos:
 Pueden utilizar class o función constructora.
 */
 
-function Queue() {      // funcion constructora de clase, por eso se usa el this. Seria la equivalencia a la clase
+function Queue() {      // Funcion constructora de clase, por eso se usa el this. Seria la equivalencia a la clase
   this.array = [];
 }
 
