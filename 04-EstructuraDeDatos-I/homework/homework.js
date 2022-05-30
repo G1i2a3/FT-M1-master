@@ -89,7 +89,7 @@ Queue.prototype.size = function() {
   return this.array.length
 }
 
-// class Queue {         // Clase  
+// class Queue {         // Clase   
 //   constructor() {
 //     this.array = [];
 //   }
