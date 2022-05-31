@@ -51,22 +51,22 @@ BinarySearchTree.prototype.contains = function(value){
   }
   return false;
 }
-
+//"post-order" : ABAJO --> ARRIBA Y  IZQ --> DER  (IZQ - DER - NODO)
 BinarySearchTree.prototype.depthFirstForEach = function(cb, argumento){  
-  if (argumento === "post-order"){  //IZQ --> DER
-    if (this.left){                //ABAJO --> ARRIBA
+  if (argumento === "post-order"){  
+    if (this.left){                
       this.left.depthFirstForEach(cb, argumento);
     }
     if (this.right){
       this.right.depthFirstForEach(cb, argumento);
     }    
-    cb(this.value)    // En este caso el cb lo pushea a un array 
+    cb(this.value)    // En este caso el cb lo pushea a un array (porque asi lo dice el test)
       
   }
-//IZQ --> DER y ABAJO --> ARRIBA
+//"pre-order": ARRIBA --> ABAJO y IZQ --> DER (NODO - IZQ - DER)
   if (argumento === "pre-order"){
     cb(this.value);
-    if (this.left){                //ABAJO --> ARRIBA
+    if (this.left){                
       this.left.depthFirstForEach(cb, argumento);
     }
     if (this.right){
@@ -74,8 +74,9 @@ BinarySearchTree.prototype.depthFirstForEach = function(cb, argumento){
     }    
   }
 
-  if (argumento === "in-order" || argumento === undefined){
-    if (this.left){                //ABAJO --> ARRIBA
+//"in-order": IZQUIERDA --> NODO --> DERECHA
+  if (argumento === "in-order" || argumento === undefined){ 
+    if (this.left){               
       this.left.depthFirstForEach(cb, argumento);
     }
     cb(this.value);
@@ -84,7 +85,7 @@ BinarySearchTree.prototype.depthFirstForEach = function(cb, argumento){
     }
   }
 }
-
+// breadthFirstForEach ES POR FILAS DE ARRIBA A ABAJO Y DE IZQ A DER 
 BinarySearchTree.prototype.breadthFirstForEach = function(cb, value = []){
   if(this.left !== null){
     value.push(this.left)
@@ -114,7 +115,14 @@ if (this.right){
  }
 
  return count;
-  
+
+//OPCION 2:!!!!!!!!!!!!!!!!!!!!!
+//  BinarySearchTree.prototype.size = function(){
+//  if(!this.left && !this.right) return 1;
+//  if(!this.left && this.right) return 1 + this.right.size();
+//  if(this.left && !this.right) return 1 + this.left.size();
+//  if(this.left && this.right) return 1 + this.left.size() + this.right.size()}  
+ 
 }
 // No modifiquen nada debajo de esta linea
 // --------------------------------
