@@ -46,10 +46,28 @@ function bubbleSort(array) {
 // entonces este algoritmo seria n*n (n^2)
 
 // OPCION 2:
+  // function bubbleSort(array) {
+    // let swap = true;
+    // while(swap){
+    //  swap = false
+    //   for(let i = 0; i < array.length -1  ; i++){
+    //     if( array[i] > array[i+1]){
+    //       let aux = array[i]
+    //       array[i] = array[i+1]
+    //       array[i+1] =aux
+    //       swap = true
+    //     }
+    //   }      
+    // }
+    // return array  
+  // }
+
+
+// OPCION 3 (es como la opcion 2 pero con do en vez de while):
   // function bubbleSort(array) {  
   // let swap;
 	// do {
-	// 	swap = false;
+	// 	swap = false;  // si no lo cambio a false seria un bucle infinito
 	// 	for (let i = 0; i < array.length; i++) {
 	// 		if (array[i] > array[i + 1]) {
 	// 			let aux = array[i];
@@ -81,6 +99,14 @@ function insertionSort(array) {
   return array
 }
 
+// [1, 2, 4, 5, 8]
+// i   |
+//min  |
+//j           |
+
+// i = 1
+// j = 3
+// min = 1
 
 function selectionSort(array) {
   // Implementar el método conocido como selectionSort para ordenar de menor a mayor
