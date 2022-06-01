@@ -8,7 +8,7 @@ function factorear(num) {
   // Tu código:
   let array = [1];
   let div = 2;
-  while (num !== 1){
+  while (num !== 1){       
   if (num % div === 0){
     array.push(div); 
     num = num/div;       
@@ -18,7 +18,7 @@ function factorear(num) {
   }
   }
   return array
-}  
+}  // la factorizacion termina cuando el ultimo numero es primo (en este caso 5), osea que solo se puede dividir por si mismo o por cero.
 
 function bubbleSort(array) {
   // Implementar el método conocido como bubbleSort para ordenar de menor a mayor
@@ -41,7 +41,7 @@ function bubbleSort(array) {
 }
 // while es un bulce (bucle 1)
 // for es un bucel (bucle 2)
-// if NO es un for
+// if NO es un bucle
 // cada bucle es un "n"
 // entonces este algoritmo seria n*n (n^2)
 
