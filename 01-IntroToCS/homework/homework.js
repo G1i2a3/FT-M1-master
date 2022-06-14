@@ -20,6 +20,17 @@ function BinarioADecimal(num) {
   // return parseInt(num, 2); // esto reemplaza a todo el codigo anterior 
 
 }
+/*
+function BinarioADecimal(num) {
+  // tu codigo aca
+  let numero = num.split("").reverse()
+  let decimal = 0;
+  for (let i =0; i < numero.length; i ++){
+    decimal = decimal + (numero[i]*2**i)
+  }
+  return decimal;
+}
+*/
 
 
 function DecimalABinario(num) {
@@ -42,6 +53,17 @@ function DecimalABinario(num) {
 
 
 }
+/*
+function DecimalABinario(num) {
+  // tu codigo aca
+  let binario = [];
+  while (num > 0){
+    binario.unshift(num % 2);
+    num = Math.floor(num/2);
+  }
+  return binario.join("")
+}
+*/
 
 
 // 14 / 2     7 | 0
