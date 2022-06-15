@@ -82,11 +82,11 @@ Implementar la clase LinkedList, definiendo los siguientes métodos:
   LinkedList.prototype.search = function (argumento) {
     let buscar = this.head;
     while (buscar !== null){
-      if (typeof argumento === "function") { 
+      //if (typeof argumento === "function") { 
         if (argumento(buscar.value)) {
           return buscar.value
         }
-      }
+      //}
       else {
         if (buscar.value === argumento){
           return argumento
